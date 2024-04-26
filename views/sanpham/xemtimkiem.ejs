@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+    
+    <div class="container">
+        <h1 class="mt-5">View Product Information</h1>
+        <a href="/them" class="btn btn-success">Add Product</a>
+        <a href="/gianhang/xemgianhang" class="btn btn-info">View Stores</a>
+        <a href="/hienthisanphamnguoidung/hienthinguoidung" class="btn btn-info">View User Products</a>
+
+        <form action="/timkiem" method="get" class="mt-4 search-form">
+            <div class="form-group">
+                <label for="timkiem">Search by Name:</label>
+                <input type="text" id="timkiem" name="timkiem" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+            <a href="/xem" class="btn btn-primary">Back to View Page</a>
+        </form>
+        <!-- Table to display search results -->
+        <table class="table mt-4">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Store Area</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data1.forEach(function(item) { %>
+                    <tr>
+                        <td><%= item.id %></td>
+                        <td><%= item.ten %></td>
+                        <td><%= item.mota %></td>
+                        <!-- Display the product image -->
+                        <td><img src="<%= item.anh %>" alt="Product Image" style="max-width: 100px;"></td>
+                        <td><%= item.idgianhang %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+    <!-- Bootstrap JS and related libraries -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

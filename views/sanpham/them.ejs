@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4"><%= title %></h1>
+        <form action="/them" method="post" class="mt-4">
+            <div class="form-group">
+                <label for="id">ID:</label>
+                <input type="text" id="id" name="id" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="ten">Name:</label>
+                <input type="text" id="ten" name="ten" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="mota">Description:</label>
+                <textarea id="mota" name="mota" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="loai">Store Area:</label>
+                <select id="loai" name="idgianhang" class="form-control">
+                    <% data1.forEach(function(item) { %>
+                        <option value="<%= item.idgianhang %>"><%= item.idgianhang %></option>
+                    <% }); %>
+                  
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="image">Image URL:</label>
+                <input type="url" id="anh" name="anh" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="ten">Price:</label>
+                <input type="text" id="gia" name="gia" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+    </div>
+    <!-- Bootstrap JS và các thư viện liên quan -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

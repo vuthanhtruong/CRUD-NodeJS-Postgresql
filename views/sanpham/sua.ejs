@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Toy</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Edit Toy</h1>
+        <% data1.forEach(function(item) { %>
+            <form action="/sua/<%= item.id %>" method="post" class="mt-4">
+                <div class="form-group">
+                    <label for="ten">Name:</label>
+                    <input type="text" id="ten" name="ten" value="<%= item.ten %>" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="mota">Description:</label>
+                    <textarea id="mota" name="mota" class="form-control"><%= item.mota %></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="idgianhang">Store Area:</label>
+                    <select id="idgianhang" name="idgianhang" class="form-control">
+                        <% data2.forEach(function(gianhang) { %>
+                            <option value="<%= gianhang.idgianhang %>" <%= (gianhang.idgianhang === item.idgianhang) ? 'selected' : '' %>><%= gianhang.idgianhang %></option>
+                        <% }); %>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="anh">Image:</label>
+                    <input type="text" id="anh" name="anh" value="<%= item.anh %>" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="ten">Price:</label>
+                    <input type="text" id="gia" name="gia" value="<%= item.gia %>" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        <% }); %>
+        <% if (data1.length === 0) { %>
+            <p class="mt-4">No data found.</p>
+        <% } %>
+    </div>
+    <!-- Bootstrap JS và các thư viện liên quan -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

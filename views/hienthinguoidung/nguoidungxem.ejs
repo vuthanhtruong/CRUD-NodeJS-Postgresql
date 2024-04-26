@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Products</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<style>
+/* Add your custom CSS styles here */
+
+/* Style for the container */
+.container {
+    margin-top: 20px;
+}
+
+/* Style for the product container */
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Style for the product card */
+.product {
+    flex: 1 0 33.33%;
+    margin-bottom: 20px;
+}
+
+/* Style for the card */
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Style for the card hover effect */
+.card:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Style for the card image */
+.card-img-top {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+/* Style for the card title */
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+/* Style for the card text */
+.card-text {
+    font-size: 1rem;
+}
+
+/* Style for the price text */
+.price {
+    margin-top: auto; /* Pushes the price text to the bottom of the card body */
+    font-size: 1rem;
+    height: 30px; /* Fixed height for the price element */
+    color: red; /* Change the color to red */
+}
+
+/* Style for the button */
+.btn {
+    margin-top: 10px;
+}
+
+/* Style for the button color */
+.btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+/* Style for the button hover effect */
+.btn-info:hover {
+    background-color: #138496;
+    border-color: #117a8b;
+}
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Store Products</h1>
+        <a href="/hienthisanphamnguoidung/sanphamdaxem" class="btn btn-info">Viewed Products</a>
+        <div class="row">
+            <% data.forEach(function(item) { %>
+                <div class="col-md-4 product">
+                    <div class="card">
+                        <a href="/hienthisanphamnguoidung/chitietsanpham/<%= item.id %>">
+                            <img src="<%= item.anh %>" class="card-img-top" alt="Image">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title"><%= item.ten %></h5>
+                            <p class="card-text">Store ID: <%= item.idgianhang %></p>
+                            <p class="card-text">Price: <%= item.gia %></p>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</body>
+</html>

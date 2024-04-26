@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viewed Products</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Viewed Products</h1>
+        <a href="/hienthisanphamnguoidung/hienthinguoidung" class="btn btn-primary">Back</a>
+        <div class="row">
+            <% if (sanphamdaxem.length == 0) { %>
+                <div class="col-md-12">
+                    <p>No viewed products yet.</p>
+                </div>
+            <% } else { %>
+                <% sanphamdaxem.forEach(function(id) { %>
+                    <% data.forEach(function(item) { %>
+                        <% if(item.id == id) { %>
+                            <div class="col-md-4 product">
+                                <div class="card">
+                                    <a href="/hienthisanphamnguoidung/chitietsanpham/<%= item.id %>">
+                                        <img src="<%= item.anh %>" class="card-img-top" alt="Image">
+                                    </a>
+                                    <div class="card-body">
+                                        <h5 class="card-title"><%= item.ten %></h5>
+                                        <p class="card-text">Store ID: <%= item.idgianhang %></p>
+                                        <p class="card-text">Price: <%= item.gia %></p>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                    <% }); %>
+                <% }); %>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>
