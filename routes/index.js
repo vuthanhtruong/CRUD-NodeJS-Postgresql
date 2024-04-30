@@ -28,18 +28,6 @@ router.get('/them', function(req, res, next) {
   });
 });
 
-router.get('/timkiem', function(req, res, next) {
-  var timkiemnhe = req.query.timkiem;
-  pool.query('SELECT * FROM dochoi WHERE ten = $1', [timkiemnhe], (err, dulieu1) => {
-    if (err) {
-      console.error('Lỗi khi thực hiện truy vấn:', err.stack);
-      res.status(500).send('Đã xảy ra lỗi khi tìm kiếm.');
-    } else {
-      res.render('sanpham/xemtimkiem', { title: 'Thêm dữ liệu đi anh em', data1: dulieu1.rows });
-    }
-  });
-});
-
 router.post('/them', function(req, res, next) {
   var id = req.body.id;
   var ten = req.body.ten;
@@ -57,6 +45,20 @@ router.post('/them', function(req, res, next) {
     res.redirect('/xem');
   });
 });
+
+router.get('/timkiem', function(req, res, next) {
+  var timkiemnhe = req.query.timkiem;
+  pool.query('SELECT * FROM dochoi WHERE ten = $1', [timkiemnhe], (err, dulieu1) => {
+    if (err) {
+      console.error('Lỗi khi thực hiện truy vấn:', err.stack);
+      res.status(500).send('Đã xảy ra lỗi khi tìm kiếm.');
+    } else {
+      res.render('sanpham/xemtimkiem', { title: 'Thêm dữ liệu đi anh em', data1: dulieu1.rows });
+    }
+  });
+});
+
+
 
 
 router.get('/xem', function(req, res, next) {
